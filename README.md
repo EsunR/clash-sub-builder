@@ -2,6 +2,10 @@
 
 本项目用于根据配置规则来自动生成 Clash 配置文件，同时支持将配置文件上传到 gist 作为订阅链接使用。
 
+规则片段来自 [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR)，创建了常用的订阅分组，如下：
+
+![](https://s2.loli.net/2023/07/20/gfaL5VpHUEWNnbB.png)
+
 > 项目灵感来自 [subconvert](https://github.com/tindy2013/subconverter)，由于 subconvert 不支持 vless 订阅而放弃使用，但是本项目**只关注 Clash 配置文件**的生成（是一个非常腊鸡的脚本），没有 subconvert 那么强大的订阅规则互相转换功能。
 
 # 2. 使用方式
@@ -97,6 +101,8 @@ filename = 这里输入一个文件名，默认为 clash-sub.yaml
 ![](https://s2.loli.net/2023/07/20/GcOmD8WTa5PwKJQ.png)
 
 ![](https://s2.loli.net/2023/07/20/ZrjoPt4BwbWSaX1.png)
+
+后续每次更新节点配置或者规则，提交代码后 Github Action 就会自动帮你更新配置！
 
 # 3. 变更配置
 
