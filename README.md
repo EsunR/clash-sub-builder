@@ -77,7 +77,7 @@ rules:
 
 想要把生成的 Clash 订阅推送到 gist 上，就需要现在 gist 上创建一个 gist 项目。
 
-访问 https://gist.github.com/，然后创建一个空项目:
+访问 https://gist.github.com/ 然后创建一个空项目:
 
 ![](https://s2.loli.net/2023/07/20/X9wApBqcJGI8Ubo.png)
 
