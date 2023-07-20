@@ -1,0 +1,120 @@
+[[custom_groups]]
+name = "🔰 节点选择"
+rule = ["♻️ 自动选择", "🎯 全球直连", ".*"]
+type = "select"
+
+[[custom_groups]]
+interval = 300
+name = "♻️ 自动选择"
+rule = [".*"]
+type = "url-test"
+url = "http://www.gstatic.com/generate_204"
+
+[[custom_groups]]
+name = "🎥 NETFLIX"
+rule = [
+  "🔰 节点选择",
+  "🎯 全球直连",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "📹 Youtube"
+rule = [
+  "🔰 节点选择",
+  "🎯 全球直连",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "🤖 Openai"
+rule = [
+  "🔰 节点选择",
+  "🎯 全球直连",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "📲 Telegram"
+rule = [
+  "🔰 节点选择",
+  "🎯 全球直连",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "📺 Bilibili"
+rule = [
+  "🎯 全球直连",
+  "🔰 节点选择",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "Ⓜ️ 微软服务"
+rule = [
+  "🔰 节点选择",
+  "🎯 全球直连",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "🎮️ 游戏平台"
+rule = [
+  "🔰 节点选择",
+  "🎯 全球直连",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "🍎 苹果服务"
+rule = [
+  "🎯 全球直连",
+  "🔰 节点选择",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "🌍 国外媒体"
+rule = [
+  "🔰 节点选择",
+  "🎯 全球直连",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "🇨🇳 国内媒体"
+rule = [
+  "🎯 全球直连",
+  "🔰 节点选择",
+  ".*",
+]
+type = "select"
+
+[[custom_groups]]
+name = "⛔️ 广告拦截"
+rule = ["REJECT", "DIRECT"]
+type = "select"
+
+[[custom_groups]]
+name = "🎯 全球直连"
+rule = ["DIRECT"]
+type = "select"
+
+[[custom_groups]]
+name = "🐟 漏网之鱼"
+rule = [
+  "🔰 节点选择",
+  "🎯 全球直连",
+  ".*",
+]
+type = "select"

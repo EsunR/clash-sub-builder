@@ -1,0 +1,30 @@
+{
+  "name": "clash-sub-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node ./src/index.js",
+    "dev": "cross-env NODE_ENV=development node ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^19.0.8",
+    "chalk": "^5.2.0",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.11.7",
+    "toml": "^3.0.0",
+    "yaml": "^2.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8"
+  },
+  "volta": {
+    "node": "18.17.0"
+  }
+}

@@ -1,0 +1,123 @@
+# 靠前的规则会覆盖靠后的规则
+
+# ========= 定制规则，最高优先 =========
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/custom/Direct.list"
+
+[[rulesets]]
+group = "🔰 节点选择"
+ruleset = "rules/custom/Global.list"
+
+# ========= 广告拦截 =========
+
+[[rulesets]]
+group = "⛔️ 广告拦截"
+ruleset = "rules/ACL4SSR/Clash/BanAD.list"
+
+[[rulesets]]
+group = "⛔️ 广告拦截"
+ruleset = "rules/ACL4SSR/Clash/BanEasyListChina.list"
+
+[[rulesets]]
+group = "⛔️ 广告拦截"
+ruleset = "rules/ACL4SSR/Clash/BanProgramAD.list"
+
+# ========= 国内服务有服务且无视后续指定 =========
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/ACL4SSR/Clash/LocalAreaNetwork.list"
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/ACL4SSR/Clash/UnBan.list"
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/GoogleCN.list"
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/SteamCN.list"
+
+# ========= 国内有服务，但是需要单独指定 =========
+
+[[rulesets]]
+group = "Ⓜ️ 微软服务"
+ruleset = "rules/ACL4SSR/Clash/Microsoft.list"
+
+[[rulesets]]
+group = "📺 Bilibili"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/Bilibili.list"
+
+[[rulesets]]
+group = "📺 Bilibili"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/BilibiliHMT.list"
+
+[[rulesets]]
+group = "🎮️ 游戏平台"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/Steam.list"
+
+[[rulesets]]
+group = "🎮️ 游戏平台"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/Epic.list"
+
+[[rulesets]]
+group = "🍎 苹果服务"
+ruleset = "rules/ACL4SSR/Clash/Apple.list"
+
+# ========= 国内有服务 =========
+
+[[rulesets]]
+group = "🇨🇳 国内媒体"
+ruleset = "rules/ACL4SSR/Clash/ChinaMedia.list"
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/ACL4SSR/Clash/ChinaDomain.list"
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/ACL4SSR/Clash/ChinaCompanyIp.list"
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/ACL4SSR/Clash/Download.list"
+
+# ========= 国内无服务 =========
+
+[[rulesets]]
+group = "🎥 NETFLIX"
+ruleset = "rules/ACL4SSR/Clash/Netflix.list"
+
+[[rulesets]]
+group = "📹 Youtube"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/YouTube.list"
+
+[[rulesets]]
+group = "📲 Telegram"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/Telegram.list"
+
+[[rulesets]]
+group = "🤖 Openai"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/OpenAi.list"
+
+[[rulesets]]
+group = "🌍 国外媒体"
+ruleset = "rules/ACL4SSR/Clash/ProxyMedia.list"
+
+[[rulesets]]
+group = "🔰 节点选择"
+ruleset = "rules/ACL4SSR/Clash/ProxyGFWlist.list"
+
+# # ========= FALLBACK =========
+
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "[]GEOIP,CN"
+
+[[rulesets]]
+group = "🐟 漏网之鱼"
+ruleset = "[]FINAL"

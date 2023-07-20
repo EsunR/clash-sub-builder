@@ -1,0 +1,4 @@
+# 强制使用代理的规则
+DOMAIN-SUFFIX,sm.ms
+DOMAIN-SUFFIX,sm.ms
+DOMAIN-SUFFIX,loli.net
