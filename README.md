@@ -142,4 +142,4 @@ npm run start
 
 # 5. 更新规则
 
-本项目不定期从 ACL4SSR 同步最新的规则组，你只需要 sync fork 即可，或者手动从 ACL4SSR 拉取规则，覆盖到 `rules/ACL4SSR/` 目录下。
+手动从 [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR) 拉取规则，覆盖到 `rules/ACL4SSR/` 目录下。
