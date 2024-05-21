@@ -21,4 +21,5 @@ export function downloadACL4SSR() {
     childProcess.execSync(
         `git clone --depth 1 --single-branch --branch master ${repoUrl} ${downloadPath}`
     );
+    log("success", "ACL4SSR 最新规则下载成功");
 }

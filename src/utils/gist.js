@@ -7,9 +7,11 @@ const token = gistConfig.token;
 const gistId = gistConfig.id;
 const filename = gistConfig.filename || "clash-sub.yaml";
 
-const octokit = new Octokit({ auth: token });
-
 export async function uploadFileToGist(fileContent) {
+    if (!token || !gistId) {
+        throw new Error("请按照 README 配置 Github Token 和 Gist ID");
+    }
+    const octokit = new Octokit({ auth: token });
     // 上传文件
     // 判断文件是否存在
     const res = await octokit.rest.gists.update({
@@ -29,7 +31,14 @@ export async function uploadFileToGist(fileContent) {
     log("success", `🎊 Gist 上传成功，订阅地址: ${gistUrl}`);
 }
 
+/**
+ * 从 gist 获取模板
+ */
 export async function getTemplateFromGist() {
+    if (!gistId || !token) {
+        return;
+    }
+    const octokit = new Octokit({ auth: token });
     // 下载模板
     const res = await octokit.rest.gists.get({
         gist_id: gistId,
