@@ -51,7 +51,7 @@ async function main() {
         }
     }
     // done
-    log("success", "🎉 All done!");
+    log("info", "🎉 任务结束");
 }
 
 main();
