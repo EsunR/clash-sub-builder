@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./src/index.js",
-    "dev": "cross-env NODE_ENV=development node ./src/index.js"
+    "dev": "cross-env NODE_ENV=development node -r dotenv/config ./src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "yaml": "^2.2.2"
   },
   "devDependencies": {
+    "dotenv": "^16.4.5",
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",

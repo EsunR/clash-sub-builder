@@ -2,16 +2,15 @@ import { Octokit } from "@octokit/rest";
 import { getGistConfig } from "./configGetter.js";
 import { log } from "./log.js";
 
+const gistConfig = getGistConfig();
+const token = gistConfig.token;
+const gistId = gistConfig.id;
+const filename = gistConfig.filename || "clash-sub.yaml";
+
+const octokit = new Octokit({ auth: token });
+
 export async function uploadFileToGist(fileContent) {
-    // 读取配置
-    const gistConfig = getGistConfig();
-    const commonConfig = gistConfig.common[0];
-    const ghToken = process.env.GH_TOKEN || commonConfig.token;
-    const gistId = process.env.GIST_ID || commonConfig.id;
-    const filename =
-        process.env.GIST_FILENAME || commonConfig.filename || "clash-sub.yaml";
     // 上传文件
-    const octokit = new Octokit({ auth: ghToken });
     // 判断文件是否存在
     const res = await octokit.rest.gists.update({
         gist_id: gistId,
@@ -27,5 +26,18 @@ export async function uploadFileToGist(fileContent) {
     const gistUrl = `${
         res.data.files[filename].raw_url.split("/raw")[0]
     }/raw/${filename}`;
-    log("success", `🎊 Gist upload successful: ${gistUrl}`);
+    log("success", `🎊 Gist 上传成功，订阅地址: ${gistUrl}`);
+}
+
+export async function getTemplateFromGist() {
+    // 下载模板
+    const res = await octokit.rest.gists.get({
+        gist_id: gistId,
+    });
+    const files = res.data.files;
+    if (files["template.yml"]) {
+        const template = files["template.yml"].content;
+        log("info", "检测到 Gist 中存在模板，优先使用选择使用");
+        return template;
+    }
 }

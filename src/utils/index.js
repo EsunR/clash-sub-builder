@@ -15,7 +15,7 @@ export function generateProxies(proxies) {
         if (process.env.NODE_ENV === "development") {
             log("warn", "请在 template.yml 中添加 proxies 节点配置");
         } else {
-            throw new Error("请在 template.yml 中添加 proxies 节点配置");
+            log("error", "请在 template.yml 中添加 proxies 节点配置");
         }
     }
     return (proxies ?? []).map((proxy) => {
@@ -34,7 +34,7 @@ export function generateProxyGroups(proxies, groupsConfig) {
         if (process.env.NODE_ENV === "development") {
             log("warn", "请在 template.yml 中添加 proxies 节点配置");
         } else {
-            throw new Error("请在 template.yml 中添加 proxies 节点配置");
+            log("error", "请在 template.yml 中添加 proxies 节点配置");
         }
     }
     const proxyNames = proxies?.map((item) => item.name) ?? [];

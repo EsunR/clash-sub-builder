@@ -14,11 +14,13 @@ import {
 } from "./utils/index.js";
 import { log } from "./utils/log.js";
 import { uploadFileToGist } from "./utils/gist.js";
+import { downloadACL4SSR } from "./utils/rulesDownloader.js";
 
 async function main() {
+    downloadACL4SSR();
     const groups = getGroups();
     const rulesets = getRulesets();
-    const template = getClashTemplate();
+    const template = await getClashTemplate();
     // set proxies name
     template["proxies"] = generateProxies(template.proxies);
     // set proxy groups
@@ -33,7 +35,7 @@ async function main() {
         yaml.stringify(template),
         "utf-8"
     );
-    log("success", "🎊 Generate subscribe.yml successfully!");
+    log("success", "🎊 subscribe.yml 生成成功!");
     // upload to gist
     if (process.env.NODE_ENV === "production") {
         try {
@@ -45,7 +47,7 @@ async function main() {
             );
         } catch (error) {
             log("debug", error);
-            log("error", "Gist upload failed!");
+            log("error", "Gist 上传失败!");
         }
     }
     // done

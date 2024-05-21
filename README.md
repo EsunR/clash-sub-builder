@@ -91,12 +91,12 @@ rules:
 
 ```
 [[common]]
-id = 这里输入 gist id
 token = 这里输入 github token
+id = 这里输入 gist id
 filename = 这里输入一个文件名，默认为 clash-sub.yaml
 ```
 
-> 如果你不想明文写在配置文件里，可以使用在 Github Action 中创建环境变量，其对应的环境变量分别为 `GIST_ID`、`GH_TOKEN`、`GIST_FILENAME`。
+> 如果你不想明文写在配置文件里，可以使用在 Github Action 中创建环境变量，其对应的环境变量分别为 `GIST_TOKEN`、`GIST_ID`、`GIST_FILENAME`。
 
 ### 推送代码到 Github 上并获取订阅链接
 
