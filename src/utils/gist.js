@@ -36,17 +36,26 @@ export async function uploadFileToGist(fileContent) {
  */
 export async function getTemplateFromGist() {
     if (!gistId || !token) {
-        return;
+        log("info", "未配置 Gist 信息，使用本地模板");
+        return null;
     }
-    const octokit = new Octokit({ auth: token });
-    // 下载模板
-    const res = await octokit.rest.gists.get({
-        gist_id: gistId,
-    });
-    const files = res.data.files;
-    if (files["template.yml"]) {
-        const template = files["template.yml"].content;
-        log("info", "检测到 Gist 中存在模板，优先使用选择使用");
-        return template;
+    try {
+        const octokit = new Octokit({ auth: token });
+        // 下载模板
+        const res = await octokit.rest.gists.get({
+            gist_id: gistId,
+        });
+        const files = res.data.files;
+        if (files["template.yml"]) {
+            const template = files["template.yml"].content;
+            log("info", "检测到 Gist 中存在模板，优先使用选择使用");
+            return template;
+        } else {
+            log("info", "未检测到 Gist 中存在模板，使用本地模板");
+            return null;
+        }
+    } catch (e) {
+        log("debug", e);
+        throw new Error("Gits 模板下载失败，请检查对应 Gist ID 是否正确");
     }
 }
