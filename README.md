@@ -139,7 +139,3 @@ npm run dev
 ```
 npm run start
 ```
-
-# 5. 更新规则
-
-手动从 [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR) 拉取规则，覆盖到 `rules/ACL4SSR/` 目录下。
