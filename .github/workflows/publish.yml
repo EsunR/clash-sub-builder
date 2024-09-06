@@ -11,5 +11,4 @@ jobs:
         env:
           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
           GIST_ID: ${{ secrets.GIST_ID }}
-          GIST_FILE_NAME: ${{ secrets.GIST_FILE_NAME }}
       - run: npm install --production && npm run start

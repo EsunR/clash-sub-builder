@@ -48,6 +48,8 @@ proxy-groups:
 rules:
 ```
 
+如果你需要创建多套模板，可以在 `/config` 目录下创建多个以 `template` 为开头的模板文件，如 `template_reality.yml`、`template_hysteria2.yml`，脚本会将其全部读取并转换为多个订阅链接。
+
 如果你不知道如何编写 Clash 订阅节点的配置，可以参考：
 
 - [Clash 节点配置官方文档](https://dreamacro.github.io/clash/zh_CN/configuration/outbound.html#outbound-%E5%87%BA%E7%AB%99)
@@ -93,10 +95,9 @@ rules:
 [[common]]
 token = 这里输入 github token
 id = 这里输入 gist id
-filename = 这里输入一个文件名，默认为 clash-sub.yaml
 ```
 
-> 如果你不想明文写在配置文件里，可以使用在 Github Action 中创建环境变量，其对应的环境变量分别为 `GIST_TOKEN`、`GIST_ID`、`GIST_FILENAME`。
+> 如果你不想明文写在配置文件里，可以使用在 Github Action 中创建环境变量，其对应的环境变量分别为 `GIST_TOKEN`、`GIST_ID`。
 
 ### 推送代码到 Github 上并获取订阅链接
 

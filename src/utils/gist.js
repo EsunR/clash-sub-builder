@@ -5,9 +5,13 @@ import { log } from "./log.js";
 const gistConfig = getGistConfig();
 const token = gistConfig.token;
 const gistId = gistConfig.id;
-const filename = gistConfig.filename || "clash-sub.yaml";
 
-export async function uploadFileToGist(fileContent) {
+/**
+ * 上传文件到 gist 项目中
+ * @param {String} fileName 文件名
+ * @param {String} fileContent 文件内容
+ */
+export async function uploadFileToGist(fileName, fileContent) {
     if (!token || !gistId) {
         throw new Error("请按照 README 配置 Github Token 和 Gist ID");
     }
@@ -19,16 +23,16 @@ export async function uploadFileToGist(fileContent) {
         description:
             "clash subscribe (created by node EsunR/clash-sub-builder)",
         files: {
-            [filename]: {
+            [fileName]: {
                 content: fileContent,
             },
         },
     });
     // 拼接 url
     const gistUrl = `${
-        res.data.files[filename].raw_url.split("/raw")[0]
-    }/raw/${filename}`;
-    log("success", `🎊 Gist 上传成功，订阅地址: ${gistUrl}`);
+        res.data.files[fileName].raw_url.split("/raw")[0]
+    }/raw/${fileName}`;
+    return gistUrl;
 }
 
 /**

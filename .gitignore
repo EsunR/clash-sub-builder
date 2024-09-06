@@ -130,6 +130,6 @@ dist
 .pnp.*
 
 .DS_Store
-subscribe.yml
+subscribe*.yml
 
 ACL4SSR
