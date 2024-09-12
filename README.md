@@ -111,6 +111,8 @@ id = 这里输入 gist id
 
 后续每次更新节点配置或者规则，提交代码后 Github Action 就会自动帮你更新配置！
 
+> PS: Gist 无法在中国大陆正常访问，你可以使用 Vercel 或者 Cloudflare 来搭建一个建议的代理服务代理到你的订阅链接上
+
 # 3. 变更配置
 
 如果你不满足预设的配置，你可以在 `config/groups.toml` 中修改或新增配置组，还可以在 `config/rulesets.toml` 中修改每个配置组的规则。
