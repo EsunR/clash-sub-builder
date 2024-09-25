@@ -42,6 +42,10 @@ ruleset = "rules/ACL4SSR/Clash/Ruleset/GoogleCN.list"
 group = "🎯 全球直连"
 ruleset = "rules/ACL4SSR/Clash/Ruleset/SteamCN.list"
 
+[[rulesets]]
+group = "🎯 全球直连"
+ruleset = "rules/ACL4SSR/Clash/Ruleset/SteamRegionCheck.list"
+
 # ========= 国内有服务，但是需要单独指定 =========
 
 [[rulesets]]

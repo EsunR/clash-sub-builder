@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./src/index.js",
-    "dev": "cross-env NODE_ENV=development node -r dotenv/config ./src/index.js"
+    "dev": "cross-env NODE_ENV=development node -r dotenv/config ./src/index.js",
+    "download:rules": "git clone --depth 1 --single-branch --branch master https://github.com/ACL4SSR/ACL4SSR.git ./rules/ACL4SSR"
   },
   "author": "",
   "license": "ISC",

@@ -142,3 +142,20 @@ npm run dev
 ```
 npm run start
 ```
+
+# 5. 同步本仓库的更新
+
+> 注意：需要掌握一定的 git 相关知识，否则请手动覆盖代码进行更新
+
+降本项目的 git 源设置为 upstream：
+
+```sh
+git remote add upstream https://github.com/EsunR/clash-sub-builder.git
+```
+
+从 upstream 拉取最新代码：
+
+```sh
+git fetch upstream
+git merge upstream/main
+```

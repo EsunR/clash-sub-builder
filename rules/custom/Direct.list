@@ -1,21 +1,3 @@
 # 强制使用直连的规则
 DOMAIN-SUFFIX,aliyundrive.net
 DOMAIN-SUFFIX,*.plex.direct
-
-# Steam 下载
-DOMAIN,ext1-hkg1.steamserver.net
-DOMAIN,ext2-hkg1.steamserver.net
-DOMAIN,ext3-hkg1.steamserver.net
-DOMAIN,ext4-hkg1.steamserver.net
-DOMAIN,ext5-hkg1.steamserver.net
-DOMAIN,ext6-hkg1.steamserver.net
-DOMAIN,ext7-hkg1.steamserver.net
-DOMAIN,ext1-tyo3.steamserver.net
-DOMAIN,ext2-tyo3.steamserver.net
-DOMAIN,ext3-tyo3.steamserver.net
-DOMAIN,ext4-tyo3.steamserver.net
-DOMAIN,ext1-sgp1.steamserver.net
-DOMAIN,ext2-sgp1.steamserver.net
-DOMAIN,ext3-sgp1.steamserver.net
-DOMAIN,ext4-sgp1.steamserver.net
-DOMAIN,ext2-lax1.steamserver.net
