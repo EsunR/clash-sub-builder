@@ -29,7 +29,7 @@ rule = [
 type = "select"
 
 [[custom_groups]]
-name = "🤖 Openai"
+name = "🤖 AI"
 rule = [
   "🔰 节点选择",
   "🎯 全球直连",
