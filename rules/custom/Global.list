@@ -1,5 +1,6 @@
-# 强制使用代理的规则
+# SM 图床
 DOMAIN-SUFFIX,sm.ms
 DOMAIN-SUFFIX,sm.ms
 DOMAIN-SUFFIX,loli.net
-DOMAIN-KEYWORD,google
+# DawangIDC
+DOMAIN-SUFFIX,dawangidc.com

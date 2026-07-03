@@ -137,3 +137,11 @@ export function generateRules(
     log("info", `规则生成完毕，共计 ${notEmptyRules.length} 条规则`);
     return notEmptyRules;
 }
+
+export function transBit2Gb(bit: number): number {
+    return bit / 1024 / 1024 / 1024;
+}
+
+export function transGb2Bit(gb: number): number {
+    return gb * 1024 * 1024 * 1024;
+}

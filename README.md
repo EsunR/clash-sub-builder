@@ -20,9 +20,9 @@
 
 ## 2.1 填写节点信息
 
-> 如果你之前使用的是机场订阅，可以直接用浏览器打开机的订阅链接，复制页面上的内容，覆盖掉 `/config/template.yml` 中的内容即可，然后跳过这一节
+> 如果你之前使用的是机场订阅，可以直接用浏览器打开机的订阅链接，复制页面上的内容，覆盖掉 `/config/subscribes/template.yml` 中的内容即可，然后跳过这一节
 
-编辑 `/config/template.yml` 的 Clash 订阅模板，将你的节点信息写入到 proxies 里，你也可以在此添加其他配置，添加了节点信息的模板示例如下：
+编辑 `/config/subscribes/template.yml` 的 Clash 订阅模板，将你的节点信息写入到 proxies 里，你也可以在此添加其他配置，添加了节点信息的模板示例如下：
 
 ```yml
 mixed-port: 7890
@@ -48,12 +48,11 @@ proxy-groups:
 rules:
 ```
 
-如果你需要创建多套模板，可以在 `/config` 目录下创建多个以 `template` 为开头的模板文件，如 `template_reality.yml`、`template_hysteria2.yml`，脚本会将其全部读取并转换为多个订阅链接。
+如果你需要创建多套模板，可以在 `/config/subscribes` 目录下创建多个 `.yml` 文件，脚本会将其全部读取并转换为多个订阅链接（注：以 `_` 开头的文件不会被读取）。
 
 如果你不知道如何编写 Clash 订阅节点的配置，可以参考：
 
-- [Clash 节点配置官方文档](https://dreamacro.github.io/clash/zh_CN/configuration/outbound.html#outbound-%E5%87%BA%E7%AB%99)
-- [Clash.meta 节点配置官方文档](https://wiki.metacubex.one/config/proxies/)
+- [mihomo 文档](https://wiki.metacubex.one/config/)
 
 ## 2.2 上传配置到 gist 生成订阅链接
 
@@ -91,13 +90,27 @@ rules:
 
 经过上面两个步骤，我们已经拿到了 github token 和 gist id，打开 `/config/gist.toml` 完善配置文件：
 
-```
+```toml
 [[common]]
 token = 这里输入 github token
 id = 这里输入 gist id
 ```
 
 > 如果你不想明文写在配置文件里，可以使用在 Github Action 中创建环境变量，其对应的环境变量分别为 `GIST_TOKEN`、`GIST_ID`。
+
+### 添加 VNStat 流量记录（可选）
+
+在 `config/vnstat.toml` 中添加你的 vnstat 流量记录服务的接口地址，该订会将流量信息写入到配置中，在支持的客户端里显示节点的流量用量，配置示例如下：
+
+```toml
+[[server]]
+url = "http://xxx.xxx.xxx.xxx:xxxx/json.cgi"
+name = "eth0"
+# 显示名称
+hostName = "🇭🇰 HK"
+# 流量总量，单位 MB
+total = 2000
+```
 
 ### 推送代码到 Github 上并获取订阅链接
 
@@ -126,21 +139,21 @@ id = 这里输入 gist id
 首先准备好 node 环境（v18），然后安装项目依赖：
 
 ```sh
-npm install
+deno install
 ```
 
 如果只想生成 Clash 配置文件，而不想上传到 gist，可以执行：
 
 ```sh
-npm run dev
+deno run dev
 ```
 
 生成的配置文件可以在根目录找到（subscribe.yml）。
 
 如果需要上传到 gist，则执行：
 
-```
-npm run start
+```sh
+deno run start
 ```
 
 # 5. 同步本仓库的更新

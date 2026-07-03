@@ -1,3 +1,16 @@
-# 强制使用直连的规则
+# 公司
+DOMAIN-KEYWORD,baidu
+DOMAIN-KEYWORD,baidu-int
+DOMAIN-KEYWORD,bcebos
+DOMAIN-KEYWORD,overseadia
+
+# 谷歌翻译
+DOMAIN-SUFFIX,google.cn
+
+# Switch 联机
+DOMAIN-SUFFIX,npln.srv.nintendo.net
+DOMAIN-SUFFIX,n.n.srv.nintendo.net
+
+# 补漏
 DOMAIN-SUFFIX,aliyundrive.net
 DOMAIN-SUFFIX,*.plex.direct

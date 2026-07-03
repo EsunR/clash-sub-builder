@@ -18,11 +18,13 @@ import {
 } from "./utils/index.ts";
 import { log } from "./utils/log.ts";
 import { downloadACL4SSR } from "./utils/rulesDownloader.ts";
+import { createVnstatCheckerGroups, getVnstatSubscribeUserInfoHeader } from "./utils/vnstatChecker.ts";
 
 async function main(): Promise<void> {
     // 确保 downloadACL4SSR 是异步执行
     downloadACL4SSR();
     const groups = getGroups();
+    const vnstatGroups = await createVnstatCheckerGroups();
     const rulesets = getRulesets();
     const templates: Template[] = await getClashTemplates();
     const subUrls: string[] = [];
@@ -34,6 +36,7 @@ async function main(): Promise<void> {
             proxies: ClashProxiesItem[];
             "proxy-groups": ClashProxyGroupItem[];
             rules: string[];
+            "subscribe-headers": Record<string, string>;
         };
 
         log(
@@ -45,25 +48,34 @@ async function main(): Promise<void> {
         parsedYaml["proxies"] = generateProxies(parsedYaml?.proxies || []);
 
         // 处理 proxy-groups 配置
-        const proxyGroups = generateProxyGroups(parsedYaml.proxies, groups);
+        const proxyGroups = generateProxyGroups(parsedYaml.proxies, [
+            ...vnstatGroups,
+            ...groups,
+        ]);
         parsedYaml["proxy-groups"] = proxyGroups;
 
         // 处理 rules 配置
         const rules = generateRules(rulesets, groups);
         parsedYaml["rules"] = rules;
 
+        // 添加 headers
+        const subScribeUserInfo = await getVnstatSubscribeUserInfoHeader()
+        parsedYaml["subscribe-headers"] = {
+            'profile-update-interval': '24',
+            ...(subScribeUserInfo ? { 'subscription-userinfo': subScribeUserInfo } : {}),
+        };
+
         // 写入文件
         const templateSuffix = fileName
-            .replace(path.extname(fileName), "")
-            .replace("template", "");
-        const writeFileName = `subscribe${templateSuffix}.yml`;
+            .replace(path.extname(fileName), "");
+        const writeFileName = `subscribe_${templateSuffix}.yml`;
 
         fs.writeFileSync(
             path.join(ROOT_PATH, writeFileName),
             yaml.stringify(parsedYaml),
             "utf-8"
         );
-        log("success", "🎊 subscribe.yml 生成成功!");
+        log("success", `🎊 ${writeFileName} 生成成功!`);
 
         // 上传到 Gist
         if (process.env.NODE_ENV === "production") {

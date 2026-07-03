@@ -8,7 +8,7 @@ interval = 300
 name = "♻️ 自动选择"
 rule = [".*"]
 type = "url-test"
-url = "http://www.gstatic.com/generate_204"
+url = "https://www.gstatic.com/generate_204"
 
 [[custom_groups]]
 name = "🎥 NETFLIX"
@@ -30,11 +30,7 @@ type = "select"
 
 [[custom_groups]]
 name = "🤖 AI"
-rule = [
-  "🔰 节点选择",
-  "🎯 全球直连",
-  ".*",
-]
+rule = [".*"]
 type = "select"
 
 [[custom_groups]]

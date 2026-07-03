@@ -3,8 +3,9 @@ import path from "node:path";
 import process from "node:process";
 import toml from "toml";
 import yaml from "yaml";
-import { CONFIG_DIR_PATH } from "../constance.ts";
+import { CONFIG_DIR_PATH, SUBSCRIBES_DIR_PATH } from "../constance.ts";
 import { getTemplateFromGist } from "./gist.ts";
+import { VnstatConfigItem } from "./vnstatChecker.ts";
 
 /**
  * 获取 Groups 配置
@@ -49,9 +50,9 @@ export async function getClashTemplates(): Promise<Array<Template>> {
     }
 
     const filePaths = fs
-        .readdirSync(CONFIG_DIR_PATH)
-        .filter((file) => /^template.*\.yml$/.test(file))
-        .map((file) => path.resolve(CONFIG_DIR_PATH, file));
+        .readdirSync(SUBSCRIBES_DIR_PATH)
+        .filter((file) => file.endsWith(".yml") && !file.startsWith("_"))
+        .map((file) => path.resolve(SUBSCRIBES_DIR_PATH, file));
 
     // 读取本地模板
     const templateFilesContent = filePaths.map((file) => {
@@ -83,4 +84,14 @@ export function getGistConfig(): { token: string; id: string } {
         token: GIST_TOKEN || tomlConfig.token,
         id: GIST_ID || tomlConfig.id,
     };
+}
+
+export function getVnstatConfig(): Array<VnstatConfigItem> {
+    const vnstatConfigPath = path.resolve(CONFIG_DIR_PATH, "vnstat.toml");
+    if (!fs.existsSync(vnstatConfigPath)) {
+        return [];
+    }
+    const vnstatConfigContent = fs.readFileSync(vnstatConfigPath, "utf-8");
+    const vnstatConfigParsed = toml.parse(vnstatConfigContent);
+    return vnstatConfigParsed.server || [];
 }

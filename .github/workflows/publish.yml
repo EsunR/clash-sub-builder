@@ -1,5 +1,10 @@
 name: publish
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - main
+  schedule:
+    - cron: "0 1 * * *"
 jobs:
     run:
         runs-on: ubuntu-latest

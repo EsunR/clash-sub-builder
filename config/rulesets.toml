@@ -10,6 +10,10 @@ ruleset = "rules/custom/Direct.list"
 group = "🔰 节点选择"
 ruleset = "rules/custom/Global.list"
 
+[[rulesets]]
+group = "🤖 AI"
+ruleset = "rules/custom/AI.list"
+
 # ========= 广告拦截 =========
 
 [[rulesets]]
