@@ -143,7 +143,7 @@ proxy-groups:
     - Proxy_T12_Elite12.For_Financeandweb3_2087
     - Proxy_T13_Elite13.For_Financeandweb3_2096
 
-- name: 🌍选择代理
+- name: 🌍选择高速代理
   type: select
   proxies:
     - 负载均衡
@@ -159,4 +159,4 @@ proxy-groups:
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,🌍选择代理
+  - MATCH,🌍选择高速代理
