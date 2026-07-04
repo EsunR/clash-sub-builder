@@ -1,8 +1,163 @@
-mixed-port: 7890
+
+port: 7890
 allow-lan: true
-mode: Rule
+mode: rule
 log-level: info
-external-controller: :9090
+unified-delay: true
+dns:
+  enable: true 
+  listen: "0.0.0.0:1053"
+  ipv6: true
+  prefer-h3: false
+  respect-rules: true
+  use-system-hosts: false
+  cache-algorithm: "arc"
+  enhanced-mode: "fake-ip"
+  fake-ip-range: "198.18.0.1/16"
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - "localhost.ptlogin2.qq.com"
+    - "localhost.sec.qq.com"
+    - "+.in-addr.arpa"
+    - "+.ip6.arpa"
+    - "time.*.com"
+    - "time.*.gov"
+    - "pool.ntp.org"
+    - "localhost.work.weixin.qq.com"
+  default-nameserver: ["223.5.5.5", "119.29.29.29"]
+  nameserver:
+    - "https://1.1.1.1/dns-query"
+    - "https://8.8.8.8/dns-query"
+  proxy-server-nameserver:
+    - "https://223.5.5.5/dns-query"
+    - "https://doh.pub/dns-query"
+nameserver-policy:
+  "geosite:cn":
+     - "https://223.5.5.5/dns-query"
+     - "https://doh.pub/dns-query"
+
 proxies:
+- name: Proxy_T8_Elite8.For_Financeandweb3_443
+  type: trojan
+  server: yg8.ygkkk.dpdns.org
+  port: 443
+  password: trojan
+  udp: false
+  sni: ziyourufeng.772080.xyz
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: ziyourufeng.772080.xyz
+
+- name: Proxy_T9_Elite9.For_Financeandweb3_8443
+  type: trojan
+  server: yg9.ygkkk.dpdns.org
+  port: 8443
+  password: trojan
+  udp: false
+  sni: ziyourufeng.772080.xyz
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: ziyourufeng.772080.xyz
+
+- name: Proxy_T10_Elite10.For_Financeandweb3_2053
+  type: trojan
+  server: yg10.ygkkk.dpdns.org
+  port: 2053
+  password: trojan
+  udp: false
+  sni: ziyourufeng.772080.xyz
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: ziyourufeng.772080.xyz
+
+- name: Proxy_T11_Elite11.For_Financeandweb3_2083
+  type: trojan
+  server: yg11.ygkkk.dpdns.org
+  port: 2083
+  password: trojan
+  udp: false
+  sni: ziyourufeng.772080.xyz
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: ziyourufeng.772080.xyz
+
+- name: Proxy_T12_Elite12.For_Financeandweb3_2087
+  type: trojan
+  server: yg12.ygkkk.dpdns.org
+  port: 2087
+  password: trojan
+  udp: false
+  sni: ziyourufeng.772080.xyz
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: ziyourufeng.772080.xyz
+
+- name: Proxy_T13_Elite13.For_Financeandweb3_2096
+  type: trojan
+  server: yg13.ygkkk.dpdns.org
+  port: 2096
+  password: trojan
+  udp: false
+  sni: ziyourufeng.772080.xyz
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: ziyourufeng.772080.xyz
+
 proxy-groups:
+- name: 负载均衡
+  type: load-balance
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+    - Proxy_T8_Elite8.For_Financeandweb3_443
+    - Proxy_T9_Elite9.For_Financeandweb3_8443
+    - Proxy_T10_Elite10.For_Financeandweb3_2053
+    - Proxy_T11_Elite11.For_Financeandweb3_2083
+    - Proxy_T12_Elite12.For_Financeandweb3_2087
+    - Proxy_T13_Elite13.For_Financeandweb3_2096
+
+- name: 自动选择
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+    - Proxy_T8_Elite8.For_Financeandweb3_443
+    - Proxy_T9_Elite9.For_Financeandweb3_8443
+    - Proxy_T10_Elite10.For_Financeandweb3_2053
+    - Proxy_T11_Elite11.For_Financeandweb3_2083
+    - Proxy_T12_Elite12.For_Financeandweb3_2087
+    - Proxy_T13_Elite13.For_Financeandweb3_2096
+
+- name: 🌍选择代理
+  type: select
+  proxies:
+    - 负载均衡
+    - 自动选择
+    - DIRECT
+    - Proxy_T8_Elite8.For_Financeandweb3_443
+    - Proxy_T9_Elite9.For_Financeandweb3_8443
+    - Proxy_T10_Elite10.For_Financeandweb3_2053
+    - Proxy_T11_Elite11.For_Financeandweb3_2083
+    - Proxy_T12_Elite12.For_Financeandweb3_2087
+    - Proxy_T13_Elite13.For_Financeandweb3_2096
+
 rules:
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🌍选择代理
